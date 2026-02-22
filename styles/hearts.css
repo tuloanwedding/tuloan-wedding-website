@@ -1,0 +1,194 @@
+/* ==========================================================================
+   Falling Hearts Animation Styles
+   Hiệu ứng trái tim rơi cho thiệp cưới
+   ========================================================================== */
+
+/* Keyframes cho animation */
+@keyframes fall {
+    0% {
+        transform: translateY(-100vh) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+@keyframes sway {
+    0%, 100% { 
+        transform: translateX(0px); 
+    }
+    50% { 
+        transform: translateX(30px); 
+    }
+}
+
+/* Container cho trái tim rơi */
+.falling-hearts {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 50;
+    overflow: hidden;
+}
+
+/* Base style cho trái tim */
+.heart {
+    position: absolute;
+    color: #dc2626;
+    animation: fall linear infinite;
+    font-size: 20px;
+    user-select: none;
+    pointer-events: none;
+}
+
+/* Mobile: Hearts spread across full width (0-100%) */
+.heart:nth-child(1) { 
+    left: 10%; 
+    animation-duration: 3s; 
+    animation-delay: 0s; 
+}
+
+.heart:nth-child(2) { 
+    left: 20%; 
+    animation-duration: 4s; 
+    animation-delay: 1s; 
+}
+
+.heart:nth-child(3) { 
+    left: 30%; 
+    animation-duration: 5s; 
+    animation-delay: 2s; 
+}
+
+.heart:nth-child(4) { 
+    left: 40%; 
+    animation-duration: 3.5s; 
+    animation-delay: 0.5s; 
+}
+
+.heart:nth-child(5) { 
+    left: 50%; 
+    animation-duration: 4.5s; 
+    animation-delay: 1.5s; 
+}
+
+.heart:nth-child(6) { 
+    left: 60%; 
+    animation-duration: 3s; 
+    animation-delay: 2.5s; 
+}
+
+.heart:nth-child(7) { 
+    left: 70%; 
+    animation-duration: 4s; 
+    animation-delay: 0.8s; 
+}
+
+.heart:nth-child(8) { 
+    left: 80%; 
+    animation-duration: 5s; 
+    animation-delay: 1.2s; 
+}
+
+.heart:nth-child(9) { 
+    left: 90%; 
+    animation-duration: 3.5s; 
+    animation-delay: 2.8s; 
+}
+
+.heart:nth-child(10) { 
+    left: 15%; 
+    animation-duration: 4.2s; 
+    animation-delay: 0.3s; 
+}
+
+.heart:nth-child(11) { 
+    left: 75%; 
+    animation-duration: 3.8s; 
+    animation-delay: 1.8s; 
+}
+
+/* Kích thước khác nhau cho trái tim */
+.heart.small { 
+    font-size: 14px; 
+}
+
+.heart.medium { 
+    font-size: 18px; 
+}
+
+.heart.large { 
+    font-size: 24px; 
+}
+
+/* Desktop: Hearts concentrated in center (40-60%) */
+@media (min-width: 768px) {
+    .heart:nth-child(1) { left: 40%; }
+    .heart:nth-child(2) { left: 42%; }
+    .heart:nth-child(3) { left: 44%; }
+    .heart:nth-child(4) { left: 46%; }
+    .heart:nth-child(5) { left: 48%; }
+    .heart:nth-child(6) { left: 50%; }
+    .heart:nth-child(7) { left: 52%; }
+    .heart:nth-child(8) { left: 54%; }
+    .heart:nth-child(9) { left: 56%; }
+    .heart:nth-child(10) { left: 58%; }
+    .heart:nth-child(11) { left: 60%; }
+}
+
+/* Tablet adjustments */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .heart {
+        font-size: 18px;
+    }
+    
+    .heart.small { 
+        font-size: 12px; 
+    }
+    
+    .heart.medium { 
+        font-size: 16px; 
+    }
+    
+    .heart.large { 
+        font-size: 22px; 
+    }
+}
+
+/* Large desktop optimizations */
+@media (min-width: 1200px) {
+    .heart {
+        font-size: 22px;
+    }
+    
+    .heart.small { 
+        font-size: 16px; 
+    }
+    
+    .heart.medium { 
+        font-size: 20px; 
+    }
+    
+    .heart.large { 
+        font-size: 26px; 
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    .heart {
+        animation-duration: 8s;
+    }
+}
+
+/* High performance mode */
+.heart {
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+    perspective: 1000px;
+}

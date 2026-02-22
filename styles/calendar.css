@@ -1,0 +1,68 @@
+/* Calendar wrapper */
+.calendar {
+    background: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 2px solid #fecaca;
+}
+
+/* Header */
+.calendar-header {
+    padding: 16px;
+    background: linear-gradient(135deg, #dc2626, #b91c1c);
+    color: white;
+}
+
+/* GRID QUAN TRỌNG NHẤT */
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 6px;
+    padding: 12px;
+}
+
+/* Day header (CN, T2...) */
+.calendar-day-header {
+    text-align: center;
+    font-weight: 600;
+    color: #991b1b;
+    font-size: 0.85rem;
+}
+
+/* Day cell */
+.calendar-day {
+    height: 42px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background: #fff;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    cursor: default;
+    transition: all 0.2s ease;
+}
+
+/* Other month */
+.calendar-day.other-month {
+    color: #cbd5e1;
+}
+
+/* Hover */
+.calendar-day:hover {
+    background: #fee2e2;
+}
+
+/* Wedding day */
+.calendar-day.wedding-day {
+    background: linear-gradient(135deg, #dc2626, #b91c1c);
+    color: #fff;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.calendar-day.wedding-day span {
+    font-size: 0.8rem;
+    line-height: 1;
+}

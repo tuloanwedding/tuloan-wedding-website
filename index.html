@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thiệp Cưới - Đinh Viết Tú & Nguyễn Thị Quỳnh Loan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Cormorant+Garamond:wght@300;400;600;700&family=Great+Vibes&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery/css/lightgallery-bundle.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery/lightgallery.umd.js"></script>
+
+
+    <style>
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes heartbeat {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .animate-fadeInUp {
+            animation: fadeInUp 1s ease-out forwards;
+        }
+
+        .animate-heartbeat {
+            animation: heartbeat 2s infinite;
+        }
+
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .delay-200 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-400 {
+            animation-delay: 0.4s;
+        }
+
+        .delay-600 {
+            animation-delay: 0.6s;
+        }
+
+        .delay-800 {
+            animation-delay: 0.8s;
+        }
+
+        .delay-1000 {
+            animation-delay: 1s;
+        }
+
+        .font-dancing {
+            font-family: 'Dancing Script', cursive;
+        }
+
+        .font-cormorant {
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .font-great-vibes {
+            font-family: 'Great Vibes', cursive;
+        }
+
+        .gradient-red {
+            background: linear-gradient(135deg, #dc2626, #b91c1c, #991b1b);
+        }
+
+        .text-shadow {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .photo-frame {
+            transition: all 0.3s ease;
+        }
+
+        .photo-frame:hover {
+            transform: scale(1.05);
+        }
+
+        .photo-frame:hover .border-red-300 {
+            border-color: #ef4444;
+        }
+
+        #gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            /* 2 columns */
+            gap: 10px;
+            /* space between images */
+            max-width: 600px;
+            margin: auto;
+        }
+
+        #gallery a img {
+            width: 100%;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        #gallery a img:hover {
+            transform: scale(1.05);
+        }
+
+        .view-all-btn {
+            background: linear-gradient(135deg, #dc2626, #b91c1c);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
+        }
+
+        .view-all-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(220, 38, 38, 0.4);
+            background: linear-gradient(135deg, #b91c1c, #991b1b);
+        }
+
+        .view-all-btn:active {
+            transform: translateY(0);
+        }
+
+        .opacity-0 {
+            opacity: 0;
+        }
+
+        /* Loading Spinner */
+        .loading-spinner {
+            width: 1.25rem;
+            height: 1.25rem;
+            border: 2px solid transparent;
+            border-top: 2px solid currentColor;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Button Loading State */
+        .submit-button:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            padding: 16px 24px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3);
+            transform: translateX(100%);
+            transition: all 0.3s ease-in-out;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            max-width: 300px;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 500;
+        }
+
+        .toast.show {
+            transform: translateX(0);
+        }
+
+        .toast.error {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            box-shadow: 0 10px 25px rgba(239, 68, 68, 0.3);
+        }
+
+        .toast-icon {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+        }
+
+        .toast-message {
+            flex: 1;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        /* Envelope Animations */
+        @keyframes envelopeOpen {
+            0% {
+                transform: scale(1) rotate(0deg);
+            }
+
+            50% {
+                transform: scale(1.1) rotate(5deg);
+            }
+
+            100% {
+                transform: scale(1.2) rotate(0deg);
+                opacity: 0;
+            }
+        }
+
+        .envelope-opening {
+            animation: envelopeOpen 1s ease-in-out forwards;
+        }
+
+        @keyframes slideInFromTop {
+            from {
+                transform: translateY(-100vh);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .slide-in-from-top {
+            animation: slideInFromTop 1s ease-out forwards;
+        }
+    </style>
+    <link rel="stylesheet" href="styles/hearts.css">
+    <link rel="stylesheet" href="styles/calendar.css">
+    <link rel="stylesheet" href="styles/map.css">
+    <link rel="stylesheet" href="styles/music.css">
+    <link rel="stylesheet" href="styles/rsvp.css">
+    <link rel="stylesheet" href="styles/album.css">
+</head>
+
+<body class="min-h-screen overflow-x-hidden">
+    <!-- Music Player -->
+    <div class="music-player" id="musicPlayer" tabindex="0" role="button" aria-label="Phát nhạc nền">
+        <div class="music-info">
+            <div>🎵 Beautiful In White</div>
+        </div>
+
+        <!-- Volume Control -->
+        <!-- <div class="volume-control">
+            <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="70"
+                aria-label="Điều chỉnh âm lượng">
+        </div> -->
+
+        <!-- Play/Pause Icons -->
+        <svg class="music-icon play-icon" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+            <path
+                d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" />
+        </svg>
+
+        <svg class="music-icon pause-icon" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+            <path
+                d="M5.75 3a.75.75 0 00-.75.75v12.5c0 .414.336.75.75.75h1.5a.75.75 0 00.75-.75V3.75A.75.75 0 007.25 3h-1.5zM12.75 3a.75.75 0 00-.75.75v12.5c0 .414.336.75.75.75h1.5a.75.75 0 00.75-.75V3.75a.75.75 0 00-.75-.75h-1.5z" />
+        </svg>
+
+        <!-- Progress Bar -->
+        <div class="music-progress">
+            <div class="music-progress-bar" id="progressBar"></div>
+        </div>
+    </div>
+
+    <!-- Audio Element -->
+    <audio id="backgroundMusic" preload="auto" loop>
+        <source src="assets/Beautiful In White - Shane Filan.mp3" type="audio/mpeg">
+        Trình duyệt của bạn không hỗ trợ audio.
+    </audio>
+
+    <!-- Falling Hearts Animation -->
+    <div class="falling-hearts">
+        <div class="heart small">💕</div>
+        <div class="heart medium">❤️</div>
+        <div class="heart large">💖</div>
+        <div class="heart small">💗</div>
+        <div class="heart medium">💕</div>
+        <div class="heart large">❤️</div>
+        <div class="heart small">💖</div>
+        <div class="heart medium">💗</div>
+        <div class="heart large">💕</div>
+        <div class="heart small">❤️</div>
+        <div class="heart medium">💗</div>
+    </div>
+
+    <!-- Background Pattern -->
+
+
+    <!-- Main Container -->
+    <div class="relative z-10 min-h-screen flex items-center justify-center px-4">
+        <div id="initial-envelope"
+            class="max-w-md w-full bg-white/95 backdrop-blur-sm rounded-3xl shadow-2xl overflow-hidden cursor-pointer">
+            <!-- Envelope Content -->
+            <div class="px-6 py-12 text-center">
+                <!-- Title -->
+                <h1 class="font-great-vibes text-4xl text-red-800 mb-8 text-shadow animate-fadeInUp">
+                    Thiệp mời cưới
+                </h1>
+
+                <!-- Envelope Image -->
+                <div class="mb-8 animate-fadeInUp delay-400">
+                    <img id="envelope-image" src="images_tuloan/envelope_closed.png" alt="Envelope"
+                        class="w-48 h-auto mx-auto animate-heartbeat transition-all duration-500">
+                </div>
+
+                <!-- Instruction Text -->
+                <p class="font-cormorant text-lg text-gray-700 animate-fadeInUp delay-800">
+                    Hãy ấn để mở thiệp
+                </p>
+
+                <!-- Decorative hearts -->
+                <div class="flex justify-center space-x-4 mt-6 animate-fadeInUp delay-1000">
+                    <div class="animate-float">
+                        <svg class="w-6 h-6 text-red-400" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd"
+                                d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                    <div class="animate-float delay-200">
+                        <svg class="w-6 h-6 text-red-400" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd"
+                                d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                    <div class="animate-float delay-400">
+                        <svg class="w-6 h-6 text-red-400" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd"
+                                d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="invitation-main-content"
+            class="max-w-md w-full bg-white/95 backdrop-blur-sm shadow-2xl overflow-hidden" style="display: none">
+
+            <!-- Header Section -->
+            <div class="relative bg-gradient-to-br from-red-600 to-red-800 px-6 py-8 text-center">
+                <div id="first-image">
+                    <img src="images_tuloan/prewedding/image12.jpg" alt="Prewedding Photo"
+                        class="w-full h-auto rounded-lg shadow-lg mb-4">
+                </div>
+                <div class="absolute inset-0 bg-black/10"></div>
+                <div class="relative z-10">
+                    <!-- Heart Icon -->
+                    <div class="animate-heartbeat mb-4">
+                        <svg class="w-12 h-12 mx-auto text-white/90" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd"
+                                d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </div>
+
+                    <!-- Title -->
+                    <h1 class="font-great-vibes text-3xl text-white mb-2 text-shadow opacity-0 animate-fadeInUp">
+                        Wedding Invitation
+                    </h1>
+                    <div class="w-16 h-0.5 bg-white/60 mx-auto opacity-0 animate-fadeInUp delay-200"></div>
+                </div>
+            </div>
+            <!-- Main Content -->
+            <div class="px-6 py-8 space-y-6">
+                <div id="wedding-date"
+                    class="text-center bg-red-50 rounded-2xl p-6 border-2 border-red-200 opacity-0 animate-fadeInUp delay-1000">
+                    <div class="animate-float">
+                        <h3 class="font-cormorant text-xl font-semibold text-red-800 mb-3">
+                            Ngày trọng đại
+                        </h3>
+                        <div class="space-y-2">
+                            <p class="font-dancing text-3xl font-bold text-red-600">
+                                07 • 03 • 2026
+                            </p>
+                            <p class="font-cormorant text-lg text-red-700">
+                                Thứ Bảy
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Couple Photos -->
+                <div id="couple-portraits" class="space-y-6">
+                    <!-- Groom Photo -->
+                    <div class="text-center opacity-0 animate-fadeInUp delay-400">
+                        <div class="relative inline-block">
+                            <!-- Photo Frame -->
+                            <div class="w-32 h-32 mx-auto mb-4 relative photo-frame">
+                                <div
+                                    class="absolute inset-0 rounded-full border-4 border-red-300 bg-gradient-to-br from-red-50 to-red-100">
+                                </div>
+                                <div
+                                    class="absolute inset-2 rounded-full border-2 border-red-200 bg-white flex items-center justify-center overflow-hidden">
+
+                                    <!-- To use actual photo, replace the div above with: -->
+                                    <img src="images_tuloan/tu_portrait.JPG" alt="Chú rể"
+                                        class="w-full h-full object-cover">
+                                </div>
+                                <!-- Decorative corner elements -->
+                                <div
+                                    class="absolute -top-2 -right-2 w-6 h-6 bg-red-500 rounded-full flex items-center justify-center">
+                                    <svg class="w-3 h-3 text-white clickable-heart" fill="currentColor"
+                                        viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd"
+                                            d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        <h2 class="font-cormorant text-xl font-bold text-red-800 mb-1">Chú rể</h2>
+                        <p class="font-dancing text-3xl font-bold text-red-600 text-shadow">
+                            Đinh Viết Tú
+                        </p>
+                    </div>
+
+                    <!-- Heart Divider -->
+                    <div class="flex items-center justify-center opacity-0 animate-fadeInUp delay-600">
+                        <div class="w-16 h-px bg-red-300"></div>
+                        <div class="mx-4 animate-heartbeat">
+                            <svg class="w-8 h-8 text-red-400 clickable-heart" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd"
+                                    d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                        <div class="w-16 h-px bg-red-300"></div>
+                    </div>
+
+                    <!-- Bride Photo -->
+                    <div class="text-center opacity-0 animate-fadeInUp delay-800">
+                        <div class="relative inline-block">
+                            <!-- Photo Frame -->
+                            <div class="w-32 h-32 mx-auto mb-4 relative photo-frame">
+                                <div
+                                    class="absolute inset-0 rounded-full border-4 border-red-300 bg-gradient-to-br from-red-50 to-red-100">
+                                </div>
+                                <div
+                                    class="absolute inset-2 rounded-full border-2 border-red-200 bg-white flex items-center justify-center overflow-hidden">
+                                    <!-- Placeholder for bride photo -->
+
+                                    <!-- To use actual photo, replace the div above with: -->
+                                    <img src="images_tuloan/loan_portrait.jpg" alt="Cô dâu"
+                                        class="w-full h-full object-cover">
+                                </div>
+                                <!-- Decorative corner elements -->
+                                <div
+                                    class="absolute -top-2 -left-2 w-6 h-6 bg-red-500 rounded-full flex items-center justify-center">
+                                    <svg class="w-3 h-3 text-white clickable-heart" fill="currentColor"
+                                        viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd"
+                                            d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        <h2 class="font-cormorant text-xl font-bold text-red-800 mb-1">Cô dâu</h2>
+                        <p class="font-dancing text-3xl font-bold text-red-600 text-shadow">
+                            Nguyễn Thị Quỳnh Loan
+                        </p>
+                    </div>
+                </div>
+
+
+
+                <!-- Message -->
+                <div class="text-center space-y-4 opacity-0 animate-fadeInUp delay-1000">
+                    <div class="w-20 h-px bg-red-300 mx-auto"></div>
+                    <p class="font-cormorant text-lg text-gray-700 leading-relaxed">
+                        Chúng tôi rất hân hạnh được mời bạn<br>
+                        đến dự lễ cưới của chúng tôi
+                    </p>
+                    <div class="w-20 h-px bg-red-300 mx-auto"></div>
+                </div>
+
+                <!-- Decorative Elements -->
+                <div class="flex justify-center space-x-6 text-red-300 opacity-0 animate-fadeInUp delay-1000">
+                    <div class="animate-float">
+                        <svg class="w-6 h-6 clickable-heart" fill="currentColor" viewBox="0 0 20 20">
+                            <path
+                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        </svg>
+                    </div>
+                    <div class="animate-float delay-200">
+                        <svg class="w-6 h-6 clickable-heart" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd"
+                                d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                    <div class="animate-float delay-400">
+                        <svg class="w-6 h-6 clickable-heart" fill="currentColor" viewBox="0 0 20 20">
+                            <path
+                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Wedding Calendar -->
+                <div class="calendar opacity-0 animate-fadeInUp delay-1000">
+                    <div class="calendar-header text-center">
+                        <h3 id="calendar-title" class="font-cormorant text-xl font-bold mb-1"></h3>
+                        <p class="font-dancing text-sm opacity-90">Tháng của hạnh phúc 💕</p>
+                    </div>
+
+                    <div class="calendar-grid" id="calendar-grid">
+                        <div class="calendar-day-header">CN</div>
+                        <div class="calendar-day-header">T2</div>
+                        <div class="calendar-day-header">T3</div>
+                        <div class="calendar-day-header">T4</div>
+                        <div class="calendar-day-header">T5</div>
+                        <div class="calendar-day-header">T6</div>
+                        <div class="calendar-day-header">T7</div>
+                    </div>
+
+                    <div class="p-4 bg-red-50 text-center">
+                        <p class="font-cormorant text-sm text-red-700">
+                            📅 <strong>Ngày 07/03/2026</strong> – Ngày chúng ta bắt đầu hành trình mới
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Wedding Addresses -->
+                <div class="wedding-addresses opacity-0 animate-fadeInUp delay-1000">
+                    <!-- Address Header -->
+                    <div class="text-center mb-6">
+                        <h3 class="font-cormorant text-xl font-bold text-red-800 mb-2">🥂 Tiệc mừng cưới 🥂</h3>
+                        <div class="w-20 h-px bg-red-300 mx-auto mt-3"></div>
+                    </div>
+
+                    <!-- Party Locations with Maps -->
+                    <div id="parties-location" class="space-y-8">
+                        <div id="groom-party-information"
+                            class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-4 border-2 border-blue-200 shadow-lg">
+                            <div class="text-center mb-4">
+                                <!-- Title -->
+                                <h4 class="font-cormorant text-xl font-bold text-blue-800 mb-3">Lễ cưới</h4>
+
+                                <!-- Date Time -->
+                                <div class="mb-4">
+                                    <p class="font-dancing text-lg font-semibold text-blue-700 mb-1">
+                                        <strong>Thứ Bảy, 07/03/2026</strong>
+                                    </p>
+                                    <p class="font-cormorant text-base text-blue-600">
+                                        <strong>11:00 AM</strong>
+                                    </p>
+                                </div>
+
+                                <!-- Address -->
+                                <div class="text-left bg-white/60 rounded-lg p-4 mb-4">
+                                    <p class="font-cormorant text-base text-gray-700 leading-relaxed">
+                                        <svg class="w-5 h-5 inline mr-2 text-blue-500" fill="currentColor"
+                                            viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd"
+                                                d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
+                                                clip-rule="evenodd" />
+                                        </svg>
+                                        Trung Tâm Tiệc Cưới: ANH THANH ĐÔ
+                                        Khu Đô Thị Vườn Xanh, Xã Đô Lương, Nghệ An
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Groom Location Map -->
+                            <div class="map-content" id="groom-location">
+                                <!-- <iframe class="map-frame w-full h-64 rounded-lg"
+                                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d937.6446451221362!2d105.88781484815449!3d20.897784116491977!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135b1efd42d00d5%3A0x6eb4c228d1458a9a!2zTmjDoCBUaOG7nSBnacOhbyBo4buNIFjDom0gRMawxqFuZw!5e1!3m2!1svi!2sus!4v1759656126782!5m2!1svi!2sus"
+                                    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                                </iframe> -->
+                                <iframe class="map-frame w-full h-64 rounded-lg"
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3774.896372851436!2d105.30697481150165!3d18.891677857657882!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3139e226341cb7b5%3A0x8863228388ae8245!2sAnh%20Thanh%20Do%20Hotel!5e0!3m2!1sen!2s!4v1771693704226!5m2!1sen!2s"
+                                    allowfullscreen="" loading="lazy"
+                                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Decorative separator -->
+                    <div class="text-center mt-6">
+                        <div class="flex items-center justify-center">
+                            <div class="w-16 h-px bg-red-300"></div>
+                            <div class="mx-4 animate-heartbeat">
+                                <svg class="w-6 h-6 text-red-400" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd"
+                                        d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                            <div class="w-16 h-px bg-red-300"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Featured Image -->
+                <div class="text-center mb-6" id="featuredImageGallery">
+                    <a href="images_tuloan/prewedding/image12.jpg" class="block">
+                        <div
+                            class="w-full aspect-square overflow-hidden rounded-lg shadow-lg cursor-pointer transition-transform hover:scale-105">
+                            <img src="images_tuloan/prewedding_thumb/thumb12.jpg" class="w-full h-full object-cover">
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Wedding Album -->
+                <div id="wedding-album" class="wedding-album opacity-0 animate-fadeInUp delay-1000">
+                    <!-- Album Header -->
+                    <div class="album-header">
+
+                        <h3 class="album-title">
+                            <span class="heart-decoration">💕</span>
+                            Album Cưới
+                            <span class="heart-decoration">💕</span>
+                        </h3>
+
+                        <p class="album-subtitle">
+                            Những khoảnh khắc đẹp nhất của chúng tôi
+                        </p>
+                    </div>
+
+                    <div id="gallery">
+                        <a href="images_tuloan/prewedding/image1.jpg"><img
+                                src="images_tuloan/prewedding_thumb/thumb1.jpg" alt="Ảnh cưới 1" /></a>
+                        <a href="images_tuloan/prewedding/image2.jpg"><img
+                                src="images_tuloan/prewedding_thumb/thumb2.jpg" alt="Ảnh cưới 2" /></a>
+                        <a href="images_tuloan/prewedding/image3.jpg"><img
+                                src="images_tuloan/prewedding_thumb/thumb3.jpg" alt="Ảnh cưới 3" /></a>
+                        <a href="images_tuloan/prewedding/image4.jpg"><img
+                                src="images_tuloan/prewedding_thumb/thumb4.jpg" alt="Ảnh cưới 4" /></a>
+                    </div>
+
+                    <!-- View All Button -->
+                    <div class="text-center mt-4">
+                        <button id="viewAllPhotos" class="view-all-btn font-cormorant">
+                            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd"
+                                    d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                            Xem tất cả ảnh
+                        </button>
+                    </div>
+
+                    <!-- Hidden gallery for modal with all photos -->
+                    <div id="fullGallery" style="display: none;"></div>
+
+                </div>
+
+                <!-- RSVP Form -->
+                <div class="rsvp-container animate-fadeInUp delay-1000" style="display: none;">
+                    <!-- RSVP Header -->
+                    <div class="rsvp-header">
+                        <h3 class="font-cormorant text-xl font-bold mb-1">Xác nhận tham dự</h3>
+                        <p class="font-dancing text-sm opacity-90">Vui lòng cho chúng tôi biết bạn có thể đến được không
+                            💕</p>
+                    </div>
+
+                    <!-- RSVP Content -->
+                    <div class="rsvp-content">
+                        <form class="rsvp-form" action="#" method="POST">
+
+                            <!-- Tên người -->
+                            <div class="form-group">
+                                <label for="guest-name" class="form-label">
+                                    <svg class="form-icon" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd"
+                                            d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                    Họ và tên
+                                    <span class="required">*</span>
+                                </label>
+                                <input type="text" id="guest-name" name="guest_name" class="form-input"
+                                    placeholder="Nhập họ và tên của bạn" required>
+                            </div>
+
+                            <!-- Có thể đi được hay không -->
+                            <div class="form-group">
+                                <label class="form-label">
+                                    <svg class="form-icon" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd"
+                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                    Bạn có thể tham dự không?
+                                    <span class="required">*</span>
+                                </label>
+                                <div class="radio-group">
+                                    <label class="radio-item">
+                                        <input type="radio" name="attendance" value="yes" required>
+                                        <span class="radio-label">Có, tôi sẽ đến!</span>
+                                    </label>
+                                    <label class="radio-item">
+                                        <input type="radio" name="attendance" value="no" required>
+                                        <span class="radio-label">Rất tiếc, tôi không thể đến</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Số người đi cùng -->
+                            <div class="form-group">
+                                <label for="guest-count" class="form-label">
+                                    <svg class="form-icon" fill="currentColor" viewBox="0 0 20 20">
+                                        <path
+                                            d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z" />
+                                    </svg>
+                                    Số người đi cùng
+                                </label>
+                                <input type="number" id="guest-count" name="guest_count" class="form-input" min="0"
+                                    max="10" value="0" placeholder="0">
+                            </div>
+
+                            <!-- Lời chúc -->
+                            <div class="form-group">
+                                <label for="wishes" class="form-label">
+                                    <svg class="form-icon" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd"
+                                            d="M18 13V5a2 2 0 00-2-2H4a2 2 0 00-2 2v8a2 2 0 002 2h3l3 3 3-3h3a2 2 0 002-2zM5 7a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1zm1 3a1 1 0 100 2h3a1 1 0 100-2H6z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                    Lời chúc của bạn
+                                </label>
+                                <textarea id="guest-wishes" name="wishes" class="form-textarea" rows="4"
+                                    placeholder="Gửi lời chúc phúc đến cô dâu chú rể..."></textarea>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <button type="submit" class="submit-button" id="submit-rsvp">
+                                <svg fill="currentColor" viewBox="0 0 20 20" style="width: 1.25rem; height: 1.25rem;">
+                                    <path id="rsvp-submit-svg"
+                                        d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z" />
+                                </svg>
+                                Gửi xác nhận
+
+                            </button>
+
+                        </form>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+            <!-- Footer -->
+            <div class="bg-red-800 px-6 py-4 text-center">
+                <p class="font-cormorant text-white/90 text-sm opacity-0 animate-fadeInUp delay-1000">
+                    With love & gratitude 💕
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- JavaScript for additional interactions -->
+    <script>
+        // Envelope functionality
+        function initializeEnvelope() {
+            const envelope = document.getElementById('initial-envelope');
+            const envelopeImage = document.getElementById('envelope-image');
+            const mainContent = document.getElementById('invitation-main-content');
+
+            envelope.addEventListener('click', function () {
+                // Change to open envelope
+                envelopeImage.src = 'images_tuloan/envelope_open.png';
+                envelopeImage.classList.remove('animate-heartbeat');
+
+                // Add opening animation to envelope
+                envelope.classList.add('envelope-opening');
+
+                // After animation completes, hide envelope and show content
+                setTimeout(() => {
+                    envelope.style.display = 'none';
+                    mainContent.style.display = 'block';
+                    mainContent.classList.add('slide-in-from-top');
+
+                    // Start background music after opening
+                    setTimeout(() => {
+                        const musicPlayer = document.getElementById('musicPlayer');
+                        if (musicPlayer) {
+                            // Auto-play music after envelope opens
+                            try {
+                                const backgroundMusic = document.getElementById('backgroundMusic');
+                                backgroundMusic.play().then(() => {
+                                    // Update music player UI
+                                    musicPlayer.classList.add('playing');
+                                    const musicIcon = musicPlayer.querySelector('.music-icon');
+                                    musicIcon.classList.add('spinning');
+                                }).catch(e => {
+                                    console.log('Auto-play prevented:', e);
+                                });
+                            } catch (e) {
+                                console.log('Music play error:', e);
+                            }
+                        }
+                    }, 500);
+                }, 1000);
+            });
+        }
+
+        // Add touch interactions for mobile
+        document.addEventListener('DOMContentLoaded', function () {
+            // Initialize envelope
+            initializeEnvelope();
+            // Add click effect to hearts
+            const hearts = document.querySelectorAll('svg.clickable-heart');
+            hearts.forEach(heart => {
+                heart.addEventListener('click', function () {
+                    this.style.transform = 'scale(1.2)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 200);
+                });
+            });
+
+            // Parallax effect on scroll (subtle for mobile)
+            let ticking = false;
+            function updateParallax() {
+                const scrolled = window.pageYOffset;
+                const parallaxElements = document.querySelectorAll('.animate-float');
+
+                parallaxElements.forEach((element, index) => {
+                    const speed = 0.5 + (index * 0.1);
+                    element.style.transform = `translateY(${scrolled * speed * 0.01}px)`;
+                });
+
+                ticking = false;
+            }
+
+            window.addEventListener('scroll', function () {
+                if (!ticking) {
+                    requestAnimationFrame(updateParallax);
+                    ticking = true;
+                }
+            });
+
+            // Map loading functionality
+            initializeMap();
+
+            // Initialize music player
+            initializeMusicPlayer();
+
+            const year = 2026;
+            const month = 2; // March (0-based)
+            const weddingDay = 7;
+
+            const grid = document.getElementById("calendar-grid");
+            const title = document.getElementById("calendar-title");
+
+            if (!grid || !title) return;
+
+            title.textContent = `Tháng 3, ${year}`;
+
+            const firstDay = new Date(year, month, 1).getDay();
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
+            const daysInPrevMonth = new Date(year, month, 0).getDate();
+
+            // Ngày tháng trước
+            for (let i = firstDay - 1; i >= 0; i--) {
+                const d = document.createElement("div");
+                d.className = "calendar-day other-month";
+                d.textContent = daysInPrevMonth - i;
+                grid.appendChild(d);
+            }
+
+            // Ngày trong tháng
+            for (let day = 1; day <= daysInMonth; day++) {
+                const d = document.createElement("div");
+                d.className = "calendar-day";
+                d.textContent = day;
+
+                if (day === weddingDay) {
+                    d.classList.add("wedding-day", "font-bold");
+                    d.innerHTML = `${day}<span class="block text-sm">💍</span>`;
+                    // d.addEventListener("click", openModal);
+                }
+
+                grid.appendChild(d);
+            }
+
+            // Bù ngày cuối
+            const total = firstDay + daysInMonth;
+            const rest = (7 - (total % 7)) % 7;
+
+            for (let i = 1; i <= rest; i++) {
+                const d = document.createElement("div");
+                d.className = "calendar-day other-month";
+                d.textContent = i;
+                grid.appendChild(d);
+            }
+        });
+
+        // Music Player Functionality
+        function initializeMusicPlayer() {
+            const musicPlayer = document.getElementById('musicPlayer');
+            const backgroundMusic = document.getElementById('backgroundMusic');
+            const progressBar = document.getElementById('progressBar');
+            // const volumeSlider = document.getElementById('volumeSlider');
+
+            let isPlaying = true;
+            let isLoading = false;
+
+            // Set initial volume
+            // backgroundMusic.volume = volumeSlider.value / 100;
+
+            // Music player click handler
+            musicPlayer.addEventListener('click', function (e) {
+                e.stopPropagation();
+                toggleMusic();
+            });
+
+            // Keyboard support
+            musicPlayer.addEventListener('keydown', function (e) {
+                if (e.key === ' ' || e.key === 'Enter') {
+                    e.preventDefault();
+                    toggleMusic();
+                }
+            });
+
+            // Volume control
+            // volumeSlider.addEventListener('input', function () {
+            //     backgroundMusic.volume = this.value / 100;
+            // });
+
+            // Toggle music function
+            function toggleMusic() {
+                if (isLoading) return;
+
+                if (isPlaying) {
+                    pauseMusic();
+                } else {
+                    playMusic();
+                }
+            }
+
+            // Play music
+            function playMusic() {
+                if (isLoading) return;
+
+                isLoading = true;
+                musicPlayer.classList.add('loading');
+
+                const playPromise = backgroundMusic.play();
+
+                if (playPromise !== undefined) {
+                    playPromise
+                        .then(() => {
+                            isPlaying = true;
+                            isLoading = false;
+                            musicPlayer.classList.remove('loading');
+                            musicPlayer.classList.add('playing');
+
+                            // Start spinning animation
+                            const musicIcon = musicPlayer.querySelector('.music-icon');
+                            musicIcon.classList.add('spinning');
+
+                            // Start progress tracking
+                            updateProgress();
+                        })
+                        .catch(error => {
+                            console.log('Playback failed:', error);
+                            isLoading = false;
+                            musicPlayer.classList.remove('loading');
+                            showMusicError();
+                        });
+                }
+            }
+
+            // Pause music
+            function pauseMusic() {
+                backgroundMusic.pause();
+                isPlaying = false;
+                musicPlayer.classList.remove('playing');
+
+                // Stop spinning animation
+                const musicIcon = musicPlayer.querySelector('.music-icon');
+                musicIcon.classList.remove('spinning');
+            }
+
+            // Update progress bar
+            function updateProgress() {
+                if (isPlaying && !backgroundMusic.paused) {
+                    const progress = (backgroundMusic.currentTime / backgroundMusic.duration) * 100;
+                    progressBar.style.width = progress + '%';
+
+                    requestAnimationFrame(updateProgress);
+                }
+            }
+
+            // Handle audio events
+            backgroundMusic.addEventListener('loadstart', function () {
+                isLoading = true;
+                musicPlayer.classList.add('loading');
+            });
+
+            backgroundMusic.addEventListener('canplay', function () {
+                isLoading = false;
+                musicPlayer.classList.remove('loading');
+            });
+
+            backgroundMusic.addEventListener('ended', function () {
+                // Song ended, restart (since loop is set)
+                isPlaying = false;
+                musicPlayer.classList.remove('playing');
+                const musicIcon = musicPlayer.querySelector('.music-icon');
+                musicIcon.classList.remove('spinning');
+
+                // Auto restart
+                setTimeout(() => {
+                    playMusic();
+                }, 500);
+            });
+
+            backgroundMusic.addEventListener('error', function (e) {
+                console.error('Audio error:', e);
+                isLoading = false;
+                musicPlayer.classList.remove('loading');
+                showMusicError();
+            });
+
+            // Show error message
+            function showMusicError() {
+                const musicInfo = musicPlayer.querySelector('.music-info');
+                const originalText = musicInfo.innerHTML;
+                musicInfo.innerHTML = '<div style="color: #ef4444;">⚠️ Không thể phát nhạc</div>';
+
+                setTimeout(() => {
+                    musicInfo.innerHTML = originalText;
+                }, 3000);
+            }
+
+            // Auto-play attempt (with user interaction fallback)
+            // function attemptAutoPlay() {
+            //     // Try to autoplay when user first interacts with the page
+            //     const autoPlayHandler = function() {
+            //         playMusic();
+            //         document.removeEventListener('click', autoPlayHandler);
+            //         document.removeEventListener('touchstart', autoPlayHandler);
+            //         document.removeEventListener('keydown', autoPlayHandler);
+            //     };
+
+            //     document.addEventListener('click', autoPlayHandler, { once: true });
+            //     document.addEventListener('touchstart', autoPlayHandler, { once: true });
+            //     document.addEventListener('keydown', autoPlayHandler, { once: true });
+            // }
+
+            // // Initialize auto-play attempt
+            // attemptAutoPlay();
+
+            // // Prevent music from pausing when page loses focus (optional)
+            // document.addEventListener('visibilitychange', function() {
+            //     if (document.hidden && isPlaying) {
+            //         // Page is hidden, keep playing (browser may still pause)
+            //     } else if (!document.hidden && backgroundMusic.paused && isPlaying) {
+            //         // Page is visible again, resume if it was playing
+            //         playMusic();
+            //     }
+            // });
+        }
+
+
+    </script>
+    <script src="scripts/rsvp.js"></script>
+    <!-- This script initializes the Google Map -->
+    <script src="scripts/map.js"></script>
+    <!-- This script adds the falling hearts effect -->
+    <script src="scripts/hearts.js"></script>
+    <!-- This script handles the wedding album animations -->
+    <!-- <script src="scripts/album.js"></script>
+      -->
+    <script>
+        // Initialize main gallery with 4 photos
+        lightGallery(document.getElementById('gallery'), {
+            thumbnail: true,
+            download: false,
+            selector: 'a'
+        });
+
+        // Initialize full gallery modal
+        document.addEventListener('DOMContentLoaded', function () {
+            // Generate all 40 photos for the hidden gallery
+            const fullGallery = document.getElementById('fullGallery');
+            for (let i = 1; i <= 20; i++) {
+                const link = document.createElement('a');
+                link.href = `images_tuloan/prewedding/image${i}.jpg`;
+
+                const img = document.createElement('img');
+                img.src = `images_tuloan/prewedding_thumb/thumb${i}.jpg`;
+                img.style.display = 'none';
+
+                link.appendChild(img);
+                fullGallery.appendChild(link);
+            }
+
+            // Initialize lightGallery for full gallery
+            const fullLightGallery = lightGallery(fullGallery, {
+                thumbnail: true,
+                download: false,
+                selector: 'a',
+                animateThumb: true,
+                zoomFromOrigin: false,
+                allowMediaOverlap: true,
+                toggleThumb: true
+            });
+
+            // Handle "View All" button click
+            document.getElementById('viewAllPhotos').addEventListener('click', function () {
+                fullLightGallery.openGallery(0);
+            });
+
+            // Initialize lightGallery for featured image
+            lightGallery(document.getElementById('featuredImageGallery'), {
+                thumbnail: false,
+                download: false,
+                selector: 'a'
+            });
+        });
+    </script>
+</body>
+
+</html>

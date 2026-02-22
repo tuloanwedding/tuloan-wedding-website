@@ -1,0 +1,205 @@
+/* ==========================================================================
+   Google Maps Integration Styles
+   CSS cho Google Maps trong thiệp cưới
+   ========================================================================== */
+
+/* Map Container */
+.map-container {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    overflow: hidden;
+    margin-top: 1.5rem;
+}
+
+.map-header {
+    background: linear-gradient(135deg, #dc2626, #b91c1c);
+    color: white;
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.map-content {
+    padding: 0;
+    position: relative;
+}
+
+/* Google Maps iframe styling */
+.map-frame {
+    width: 100%;
+    height: 250px;
+    border: none;
+    display: block;
+}
+
+/* Map information section */
+.map-info {
+    padding: 1.5rem;
+    background: #fef2f2;
+    border-top: 2px solid #fecaca;
+}
+
+.location-details {
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.location-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    background: white;
+    border-radius: 12px;
+    border: 1px solid #fecaca;
+    transition: all 0.3s ease;
+}
+
+.location-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.15);
+}
+
+.location-icon {
+    width: 24px;
+    height: 24px;
+    color: #dc2626;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.location-text {
+    flex: 1;
+}
+
+.location-label {
+    font-weight: 600;
+    color: #991b1b;
+    font-size: 0.875rem;
+    margin-bottom: 0.25rem;
+}
+
+.location-value {
+    color: #374151;
+    font-size: 0.875rem;
+    line-height: 1.4;
+}
+
+/* Action buttons */
+.map-actions {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+.map-button {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    background: linear-gradient(135deg, #dc2626, #b91c1c);
+    color: white;
+    text-decoration: none;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 0.875rem;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.map-button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+    background: linear-gradient(135deg, #b91c1c, #991b1b);
+}
+
+.map-button:active {
+    transform: translateY(0);
+}
+
+.map-button svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* Loading state */
+.map-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 250px;
+    background: #f9fafb;
+    color: #6b7280;
+}
+
+.loading-spinner {
+    width: 32px;
+    height: 32px;
+    border: 3px solid #f3f4f6;
+    border-top: 3px solid #dc2626;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Responsive adjustments */
+@media (min-width: 768px) {
+    .map-frame {
+        height: 300px;
+    }
+    
+    .location-details {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .map-actions {
+        justify-content: center;
+    }
+    
+    .map-button {
+        flex: none;
+        min-width: 140px;
+    }
+}
+
+/* Large screens */
+@media (min-width: 1024px) {
+    .map-frame {
+        height: 350px;
+    }
+}
+
+/* Accessibility */
+.map-button:focus {
+    outline: 2px solid #dc2626;
+    outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .location-item:hover {
+        transform: none;
+    }
+    
+    .map-button:hover {
+        transform: none;
+    }
+}
+
+/* Print styles */
+@media print {
+    .map-container {
+        break-inside: avoid;
+    }
+    
+    .map-actions {
+        display: none;
+    }
+}

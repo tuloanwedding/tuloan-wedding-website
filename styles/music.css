@@ -1,0 +1,221 @@
+/* ==========================================================================
+   Music Player Styles
+   CSS cho music player trong thiệp cưới
+   ========================================================================== */
+
+/* Music Player Container */
+.music-player {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 50px;
+    padding: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    user-select: none;
+}
+
+.music-player:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 40px rgba(220, 38, 38, 0.2);
+}
+
+.music-player:active {
+    transform: scale(0.95);
+}
+
+/* Music Icon */
+.music-icon {
+    width: 32px;
+    height: 32px;
+    color: #dc2626;
+    transition: all 0.3s ease;
+    display: block;
+}
+
+/* Spinning Animation */
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.music-icon.spinning {
+    animation: spin 2s linear infinite;
+}
+
+/* Play/Pause States */
+.music-player.playing .play-icon {
+    display: none;
+}
+
+.music-player.playing .pause-icon {
+    display: block;
+}
+
+.music-player:not(.playing) .play-icon {
+    display: block;
+}
+
+.music-player:not(.playing) .pause-icon {
+    display: none;
+}
+
+/* Music Info Tooltip */
+.music-info {
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    transform: translateY(-50%);
+    margin-right: 12px;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    font-family: 'Cormorant Garamond', serif;
+}
+
+.music-player:hover .music-info {
+    opacity: 1;
+}
+
+/* Progress Bar */
+.music-progress {
+    position: absolute;
+    bottom: -4px;
+    left: 4px;
+    right: 4px;
+    height: 2px;
+    background: rgba(220, 38, 38, 0.2);
+    border-radius: 1px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.music-player.playing .music-progress {
+    opacity: 1;
+}
+
+.music-progress-bar {
+    height: 100%;
+    background: #dc2626;
+    border-radius: 1px;
+    width: 0%;
+    transition: width 0.1s ease;
+}
+
+/* Volume Control */
+.volume-control {
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    transform: translateY(-50%);
+    margin-right: 60px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 8px 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+.music-player:hover .volume-control {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.volume-slider {
+    width: 80px;
+    height: 4px;
+    background: #e5e7eb;
+    border-radius: 2px;
+    outline: none;
+    cursor: pointer;
+    appearance: none;
+}
+
+.volume-slider::-webkit-slider-thumb {
+    appearance: none;
+    width: 12px;
+    height: 12px;
+    background: #dc2626;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.volume-slider::-moz-range-thumb {
+    width: 12px;
+    height: 12px;
+    background: #dc2626;
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .music-player {
+        top: 10px;
+        right: 10px;
+        padding: 8px;
+    }
+    
+    .music-icon {
+        width: 28px;
+        height: 28px;
+    }
+    
+    .music-info {
+        display: none;
+    }
+    
+    .volume-control {
+        display: none;
+    }
+}
+
+/* Accessibility */
+.music-player:focus {
+    outline: 2px solid #dc2626;
+    outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .music-icon.spinning {
+        animation: none;
+    }
+    
+    .music-player:hover {
+        transform: none;
+    }
+    
+    .music-player:active {
+        transform: none;
+    }
+}
+
+/* Loading State */
+.music-player.loading {
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+.music-player.loading .music-icon {
+    animation: spin 1s linear infinite;
+}
