@@ -31,10 +31,8 @@ for idx, filename in enumerate(os.listdir(input_dir), start=1):
     if image is None:
         continue
 
-    # Resize giữ tỉ lệ cho ảnh chính
-    resized = resize_keep_ratio(image, MAX_SIZE)
     output_path = os.path.join(output_dir, f'image{idx}.jpg')
-    cv2.imwrite(output_path, resized)
+    cv2.imwrite(output_path, image)
 
     # Resize giữ tỉ lệ cho thumbnail (cũng max 600)
     thumb = resize_keep_ratio(image, MAX_SIZE)
