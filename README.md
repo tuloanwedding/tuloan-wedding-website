@@ -1,12 +1,12 @@
-# 💕 Thiệp Cưới Online - Bùi Đức Hòa & Nguyễn Diệu Hương
+# 💕 Thiệp Cưới Online - Đinh Viết Tú & Nguyễn Thị Quỳnh Loan
 
 ## Giới thiệu
 Thiệp cưới online được thiết kế đặc biệt cho smartphone với giao diện màu đỏ son sang trọng. Trang web được tối ưu hóa cho trải nghiệm di động và sử dụng các font chữ cách điệu đẹp mắt.
 
 ## Thông tin cưới
-- **Chú rể**: Bùi Đức Hòa
-- **Cô dâu**: Nguyễn Diệu Hương  
-- **Ngày cưới**: 04/01/2026
+- **Chú rể**: Đinh Viết Tú
+- **Cô dâu**: Nguyễn Thị Quỳnh Loan
+- **Ngày cưới**: 07/03/2026
 - **Thứ**: Thứ Bảy
 
 ## Tính năng

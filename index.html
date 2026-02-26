@@ -379,14 +379,21 @@
             class="max-w-md w-full bg-white/95 backdrop-blur-sm shadow-2xl overflow-hidden" style="display: none">
 
             <!-- Header Section -->
-            <div class="relative bg-[url('images_tuloan/background.jpg')] bg-cover bg-center px-6 py-8 text-center">
-                <div id="first-image">
-                    <img src="images_tuloan/prewedding/image12.jpg" alt="Prewedding Photo"
-                        class="w-full h-auto rounded-lg shadow-lg mb-4">
-                </div>
+            <div class="relative bg-[url('images_tuloan/background.jpg')] 
+            bg-cover bg-center px-6 py-12 text-center">
+
+                <!-- Overlay -->
                 <div class="absolute inset-0 bg-black/10"></div>
-                <div class="relative z-10">
-                    <!-- Heart Icon -->
+
+                <div class="relative z-10 flex flex-col items-center">
+
+                    <!-- Ảnh -->
+                    <div class="flex justify-center mb-8 mt-[30px]">
+                        <img src="images_tuloan/prewedding/image12.jpg" alt="Prewedding Photo"
+                            class="w-full max-w-md h-auto rounded-lg shadow-lg">
+                    </div>
+
+                    <!-- Heart -->
                     <div class="animate-heartbeat mb-4">
                         <svg class="w-12 h-12 mx-auto text-white/90" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd"
@@ -396,10 +403,12 @@
                     </div>
 
                     <!-- Title -->
-                    <h1 class="font-great-vibes text-3xl text-white mb-2 text-shadow opacity-0 animate-fadeInUp">
+                    <h1 class="font-great-vibes text-3xl text-white mb-2">
                         Wedding Invitation
                     </h1>
-                    <div class="w-16 h-0.5 bg-white/60 mx-auto opacity-0 animate-fadeInUp delay-200"></div>
+
+                    <div class="w-16 h-0.5 bg-white/60 mx-auto"></div>
+
                 </div>
             </div>
             <!-- Main Content -->
@@ -642,10 +651,10 @@
 
                 <!-- Featured Image -->
                 <div class="text-center mb-6" id="featuredImageGallery">
-                    <a href="images_tuloan/prewedding/image12.jpg" class="block">
+                    <a href="images_tuloan/prewedding/image11.jpg" class="block">
                         <div
                             class="w-full aspect-square overflow-hidden rounded-lg shadow-lg cursor-pointer transition-transform hover:scale-105">
-                            <img src="images_tuloan/prewedding_thumb/thumb12.jpg" class="w-full h-full object-cover">
+                            <img src="images_tuloan/prewedding_thumb/thumb11.jpg" class="w-full h-full object-cover">
                         </div>
                     </a>
                 </div>
@@ -694,476 +703,418 @@
 
                 </div>
 
-                <!-- RSVP Form -->
-                <div class="rsvp-container animate-fadeInUp delay-1000" style="display: none;">
+                <!-- RSVP Section -->
+                <div class="rsvp-container animate-fadeInUp delay-1000">
+
                     <!-- RSVP Header -->
-                    <div class="rsvp-header">
-                        <h3 class="font-cormorant text-xl font-bold mb-1">Xác nhận tham dự</h3>
-                        <p class="font-dancing text-sm opacity-90">Vui lòng cho chúng tôi biết bạn có thể đến được không
-                            💕</p>
+                    <div class="rsvp-header text-center mb-6">
+                        <h3 class="font-cormorant text-3xl font-semibold text-white mb-3 tracking-wide">
+                            Xác nhận tham dự
+                        </h3>
+                        <p class="font-dancing text-base text-white/90 max-w-md mx-auto leading-relaxed">
+                            Vui lòng cho chúng tôi biết bạn có thể đến được không<br>
+                            để chúng tôi chuẩn bị đón tiếp và phương tiện di chuyển chu đáo 💕
+                        </p>
                     </div>
 
-                    <!-- RSVP Content -->
-                    <div class="rsvp-content">
-                        <form class="rsvp-form" action="#" method="POST">
-
-                            <!-- Tên người -->
-                            <div class="form-group">
-                                <label for="guest-name" class="form-label">
-                                    <svg class="form-icon" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd"
-                                            d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
-                                            clip-rule="evenodd" />
-                                    </svg>
-                                    Họ và tên
-                                    <span class="required">*</span>
-                                </label>
-                                <input type="text" id="guest-name" name="guest_name" class="form-input"
-                                    placeholder="Nhập họ và tên của bạn" required>
-                            </div>
-
-                            <!-- Có thể đi được hay không -->
-                            <div class="form-group">
-                                <label class="form-label">
-                                    <svg class="form-icon" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd"
-                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                            clip-rule="evenodd" />
-                                    </svg>
-                                    Bạn có thể tham dự không?
-                                    <span class="required">*</span>
-                                </label>
-                                <div class="radio-group">
-                                    <label class="radio-item">
-                                        <input type="radio" name="attendance" value="yes" required>
-                                        <span class="radio-label">Có, tôi sẽ đến!</span>
-                                    </label>
-                                    <label class="radio-item">
-                                        <input type="radio" name="attendance" value="no" required>
-                                        <span class="radio-label">Rất tiếc, tôi không thể đến</span>
-                                    </label>
-                                </div>
-                            </div>
-
-                            <!-- Số người đi cùng -->
-                            <div class="form-group">
-                                <label for="guest-count" class="form-label">
-                                    <svg class="form-icon" fill="currentColor" viewBox="0 0 20 20">
-                                        <path
-                                            d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z" />
-                                    </svg>
-                                    Số người đi cùng
-                                </label>
-                                <input type="number" id="guest-count" name="guest_count" class="form-input" min="0"
-                                    max="10" value="0" placeholder="0">
-                            </div>
-
-                            <!-- Lời chúc -->
-                            <div class="form-group">
-                                <label for="wishes" class="form-label">
-                                    <svg class="form-icon" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd"
-                                            d="M18 13V5a2 2 0 00-2-2H4a2 2 0 00-2 2v8a2 2 0 002 2h3l3 3 3-3h3a2 2 0 002-2zM5 7a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1zm1 3a1 1 0 100 2h3a1 1 0 100-2H6z"
-                                            clip-rule="evenodd" />
-                                    </svg>
-                                    Lời chúc của bạn
-                                </label>
-                                <textarea id="guest-wishes" name="wishes" class="form-textarea" rows="4"
-                                    placeholder="Gửi lời chúc phúc đến cô dâu chú rể..."></textarea>
-                            </div>
-
-                            <!-- Submit Button -->
-                            <button type="submit" class="submit-button" id="submit-rsvp">
-                                <svg fill="currentColor" viewBox="0 0 20 20" style="width: 1.25rem; height: 1.25rem;">
-                                    <path id="rsvp-submit-svg"
-                                        d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z" />
-                                </svg>
-                                Gửi xác nhận
-
-                            </button>
-
-                        </form>
+                    <!-- Groom Guest -->
+                    <div class="rsvp-group">
+                        <h4 class="font-cormorant text-lg text-white mb-3 tracking-wide">
+                            Khách mời chú rể
+                        </h4>
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSe9mfj22LBc1palqEwClF6kIhrZ2jzxZvxNNlyVcj6XBlRR0w/viewform?usp=header"
+                            target="_blank" class="rsvp-button">
+                            Xác nhận phía nhà trai
+                        </a>
                     </div>
+
+                    <!-- Bride Guest -->
+                    <div class="rsvp-group mt-6">
+                        <h4 class="font-cormorant text-lg text-white mb-3 tracking-wide">
+                            Khách mời cô dâu
+                        </h4>
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSezc_Al0zzpzbvmE6qnArpa0ucQFR63MGzR6e4V0cWPnu1qVQ/viewform?usp=publish-editor"
+                            target="_blank" class="rsvp-button">
+                            Xác nhận phía nhà gái
+                        </a>
+                    </div>
+
                 </div>
 
-
+                <!-- Footer -->
+                <div class="bg-green-800 px-6 py-4 text-center rounded-2xl">
+                    <p class="font-cormorant text-white/90 text-sm opacity-0 animate-fadeInUp delay-1000">
+                        With love & gratitude 💕
+                    </p>
+                </div>
 
             </div>
-
-            <!-- Footer -->
-            <div class="bg-red-800 px-6 py-4 text-center">
-                <p class="font-cormorant text-white/90 text-sm opacity-0 animate-fadeInUp delay-1000">
-                    With love & gratitude 💕
-                </p>
-            </div>
-
         </div>
-    </div>
 
-    <!-- JavaScript for additional interactions -->
-    <script>
-        // Envelope functionality
-        function initializeEnvelope() {
-            const envelope = document.getElementById('initial-envelope');
-            const envelopeImage = document.getElementById('envelope-image');
-            const mainContent = document.getElementById('invitation-main-content');
+        <!-- JavaScript for additional interactions -->
+        <script>
+            // Envelope functionality
+            function initializeEnvelope() {
+                const envelope = document.getElementById('initial-envelope');
+                const envelopeImage = document.getElementById('envelope-image');
+                const mainContent = document.getElementById('invitation-main-content');
 
-            envelope.addEventListener('click', function () {
-                // Change to open envelope
-                envelopeImage.src = 'images_tuloan/envelope_open.png';
-                envelopeImage.classList.remove('animate-heartbeat');
+                envelope.addEventListener('click', function () {
+                    // Change to open envelope
+                    envelopeImage.src = 'images_tuloan/envelope_open.png';
+                    envelopeImage.classList.remove('animate-heartbeat');
 
-                // Add opening animation to envelope
-                envelope.classList.add('envelope-opening');
+                    // Add opening animation to envelope
+                    envelope.classList.add('envelope-opening');
 
-                // After animation completes, hide envelope and show content
-                setTimeout(() => {
-                    envelope.style.display = 'none';
-                    mainContent.style.display = 'block';
-                    mainContent.classList.add('slide-in-from-top');
-
-                    // Start background music after opening
+                    // After animation completes, hide envelope and show content
                     setTimeout(() => {
-                        const musicPlayer = document.getElementById('musicPlayer');
-                        if (musicPlayer) {
-                            // Auto-play music after envelope opens
-                            try {
-                                const backgroundMusic = document.getElementById('backgroundMusic');
-                                backgroundMusic.play().then(() => {
-                                    // Update music player UI
-                                    musicPlayer.classList.add('playing');
-                                    const musicIcon = musicPlayer.querySelector('.music-icon');
-                                    musicIcon.classList.add('spinning');
-                                }).catch(e => {
-                                    console.log('Auto-play prevented:', e);
-                                });
-                            } catch (e) {
-                                console.log('Music play error:', e);
+                        envelope.style.display = 'none';
+                        mainContent.style.display = 'block';
+                        mainContent.classList.add('slide-in-from-top');
+
+                        // Start background music after opening
+                        setTimeout(() => {
+                            const musicPlayer = document.getElementById('musicPlayer');
+                            if (musicPlayer) {
+                                // Auto-play music after envelope opens
+                                try {
+                                    const backgroundMusic = document.getElementById('backgroundMusic');
+                                    backgroundMusic.play().then(() => {
+                                        // Update music player UI
+                                        musicPlayer.classList.add('playing');
+                                        const musicIcon = musicPlayer.querySelector('.music-icon');
+                                        musicIcon.classList.add('spinning');
+                                    }).catch(e => {
+                                        console.log('Auto-play prevented:', e);
+                                    });
+                                } catch (e) {
+                                    console.log('Music play error:', e);
+                                }
                             }
-                        }
-                    }, 500);
-                }, 1000);
-            });
-        }
-
-        // Add touch interactions for mobile
-        document.addEventListener('DOMContentLoaded', function () {
-            // Initialize envelope
-            initializeEnvelope();
-            // Add click effect to hearts
-            const hearts = document.querySelectorAll('svg.clickable-heart');
-            hearts.forEach(heart => {
-                heart.addEventListener('click', function () {
-                    this.style.transform = 'scale(1.2)';
-                    setTimeout(() => {
-                        this.style.transform = '';
-                    }, 200);
+                        }, 500);
+                    }, 1000);
                 });
-            });
-
-            // Parallax effect on scroll (subtle for mobile)
-            let ticking = false;
-            function updateParallax() {
-                const scrolled = window.pageYOffset;
-                const parallaxElements = document.querySelectorAll('.animate-float');
-
-                parallaxElements.forEach((element, index) => {
-                    const speed = 0.5 + (index * 0.1);
-                    element.style.transform = `translateY(${scrolled * speed * 0.01}px)`;
-                });
-
-                ticking = false;
             }
 
-            window.addEventListener('scroll', function () {
-                if (!ticking) {
-                    requestAnimationFrame(updateParallax);
-                    ticking = true;
+            // Add touch interactions for mobile
+            document.addEventListener('DOMContentLoaded', function () {
+                // Initialize envelope
+                initializeEnvelope();
+                // Add click effect to hearts
+                const hearts = document.querySelectorAll('svg.clickable-heart');
+                hearts.forEach(heart => {
+                    heart.addEventListener('click', function () {
+                        this.style.transform = 'scale(1.2)';
+                        setTimeout(() => {
+                            this.style.transform = '';
+                        }, 200);
+                    });
+                });
+
+                // Parallax effect on scroll (subtle for mobile)
+                let ticking = false;
+                function updateParallax() {
+                    const scrolled = window.pageYOffset;
+                    const parallaxElements = document.querySelectorAll('.animate-float');
+
+                    parallaxElements.forEach((element, index) => {
+                        const speed = 0.5 + (index * 0.1);
+                        element.style.transform = `translateY(${scrolled * speed * 0.01}px)`;
+                    });
+
+                    ticking = false;
+                }
+
+                window.addEventListener('scroll', function () {
+                    if (!ticking) {
+                        requestAnimationFrame(updateParallax);
+                        ticking = true;
+                    }
+                });
+
+                // Map loading functionality
+                initializeMap();
+
+                // Initialize music player
+                initializeMusicPlayer();
+
+                const year = 2026;
+                const month = 2; // March (0-based)
+                const weddingDay = 7;
+
+                const grid = document.getElementById("calendar-grid");
+                const title = document.getElementById("calendar-title");
+
+                if (!grid || !title) return;
+
+                title.textContent = `Tháng 3, ${year}`;
+
+                const firstDay = new Date(year, month, 1).getDay();
+                const daysInMonth = new Date(year, month + 1, 0).getDate();
+                const daysInPrevMonth = new Date(year, month, 0).getDate();
+
+                // Ngày tháng trước
+                for (let i = firstDay - 1; i >= 0; i--) {
+                    const d = document.createElement("div");
+                    d.className = "calendar-day other-month";
+                    d.textContent = daysInPrevMonth - i;
+                    grid.appendChild(d);
+                }
+
+                // Ngày trong tháng
+                for (let day = 1; day <= daysInMonth; day++) {
+                    const d = document.createElement("div");
+                    d.className = "calendar-day";
+                    d.textContent = day;
+
+                    if (day === weddingDay) {
+                        d.classList.add("wedding-day", "font-bold");
+                        d.innerHTML = `${day}<span class="block text-sm">💍</span>`;
+                        // d.addEventListener("click", openModal);
+                    }
+
+                    grid.appendChild(d);
+                }
+
+                // Bù ngày cuối
+                const total = firstDay + daysInMonth;
+                const rest = (7 - (total % 7)) % 7;
+
+                for (let i = 1; i <= rest; i++) {
+                    const d = document.createElement("div");
+                    d.className = "calendar-day other-month";
+                    d.textContent = i;
+                    grid.appendChild(d);
                 }
             });
 
-            // Map loading functionality
-            initializeMap();
+            // Music Player Functionality
+            function initializeMusicPlayer() {
+                const musicPlayer = document.getElementById('musicPlayer');
+                const backgroundMusic = document.getElementById('backgroundMusic');
+                const progressBar = document.getElementById('progressBar');
+                // const volumeSlider = document.getElementById('volumeSlider');
 
-            // Initialize music player
-            initializeMusicPlayer();
+                let isPlaying = true;
+                let isLoading = false;
 
-            const year = 2026;
-            const month = 2; // March (0-based)
-            const weddingDay = 7;
+                // Set initial volume
+                // backgroundMusic.volume = volumeSlider.value / 100;
 
-            const grid = document.getElementById("calendar-grid");
-            const title = document.getElementById("calendar-title");
-
-            if (!grid || !title) return;
-
-            title.textContent = `Tháng 3, ${year}`;
-
-            const firstDay = new Date(year, month, 1).getDay();
-            const daysInMonth = new Date(year, month + 1, 0).getDate();
-            const daysInPrevMonth = new Date(year, month, 0).getDate();
-
-            // Ngày tháng trước
-            for (let i = firstDay - 1; i >= 0; i--) {
-                const d = document.createElement("div");
-                d.className = "calendar-day other-month";
-                d.textContent = daysInPrevMonth - i;
-                grid.appendChild(d);
-            }
-
-            // Ngày trong tháng
-            for (let day = 1; day <= daysInMonth; day++) {
-                const d = document.createElement("div");
-                d.className = "calendar-day";
-                d.textContent = day;
-
-                if (day === weddingDay) {
-                    d.classList.add("wedding-day", "font-bold");
-                    d.innerHTML = `${day}<span class="block text-sm">💍</span>`;
-                    // d.addEventListener("click", openModal);
-                }
-
-                grid.appendChild(d);
-            }
-
-            // Bù ngày cuối
-            const total = firstDay + daysInMonth;
-            const rest = (7 - (total % 7)) % 7;
-
-            for (let i = 1; i <= rest; i++) {
-                const d = document.createElement("div");
-                d.className = "calendar-day other-month";
-                d.textContent = i;
-                grid.appendChild(d);
-            }
-        });
-
-        // Music Player Functionality
-        function initializeMusicPlayer() {
-            const musicPlayer = document.getElementById('musicPlayer');
-            const backgroundMusic = document.getElementById('backgroundMusic');
-            const progressBar = document.getElementById('progressBar');
-            // const volumeSlider = document.getElementById('volumeSlider');
-
-            let isPlaying = true;
-            let isLoading = false;
-
-            // Set initial volume
-            // backgroundMusic.volume = volumeSlider.value / 100;
-
-            // Music player click handler
-            musicPlayer.addEventListener('click', function (e) {
-                e.stopPropagation();
-                toggleMusic();
-            });
-
-            // Keyboard support
-            musicPlayer.addEventListener('keydown', function (e) {
-                if (e.key === ' ' || e.key === 'Enter') {
-                    e.preventDefault();
+                // Music player click handler
+                musicPlayer.addEventListener('click', function (e) {
+                    e.stopPropagation();
                     toggleMusic();
+                });
+
+                // Keyboard support
+                musicPlayer.addEventListener('keydown', function (e) {
+                    if (e.key === ' ' || e.key === 'Enter') {
+                        e.preventDefault();
+                        toggleMusic();
+                    }
+                });
+
+                // Volume control
+                // volumeSlider.addEventListener('input', function () {
+                //     backgroundMusic.volume = this.value / 100;
+                // });
+
+                // Toggle music function
+                function toggleMusic() {
+                    if (isLoading) return;
+
+                    if (isPlaying) {
+                        pauseMusic();
+                    } else {
+                        playMusic();
+                    }
                 }
-            });
 
-            // Volume control
-            // volumeSlider.addEventListener('input', function () {
-            //     backgroundMusic.volume = this.value / 100;
-            // });
+                // Play music
+                function playMusic() {
+                    if (isLoading) return;
 
-            // Toggle music function
-            function toggleMusic() {
-                if (isLoading) return;
+                    isLoading = true;
+                    musicPlayer.classList.add('loading');
 
-                if (isPlaying) {
-                    pauseMusic();
-                } else {
-                    playMusic();
+                    const playPromise = backgroundMusic.play();
+
+                    if (playPromise !== undefined) {
+                        playPromise
+                            .then(() => {
+                                isPlaying = true;
+                                isLoading = false;
+                                musicPlayer.classList.remove('loading');
+                                musicPlayer.classList.add('playing');
+
+                                // Start spinning animation
+                                const musicIcon = musicPlayer.querySelector('.music-icon');
+                                musicIcon.classList.add('spinning');
+
+                                // Start progress tracking
+                                updateProgress();
+                            })
+                            .catch(error => {
+                                console.log('Playback failed:', error);
+                                isLoading = false;
+                                musicPlayer.classList.remove('loading');
+                                showMusicError();
+                            });
+                    }
                 }
-            }
 
-            // Play music
-            function playMusic() {
-                if (isLoading) return;
+                // Pause music
+                function pauseMusic() {
+                    backgroundMusic.pause();
+                    isPlaying = false;
+                    musicPlayer.classList.remove('playing');
 
-                isLoading = true;
-                musicPlayer.classList.add('loading');
-
-                const playPromise = backgroundMusic.play();
-
-                if (playPromise !== undefined) {
-                    playPromise
-                        .then(() => {
-                            isPlaying = true;
-                            isLoading = false;
-                            musicPlayer.classList.remove('loading');
-                            musicPlayer.classList.add('playing');
-
-                            // Start spinning animation
-                            const musicIcon = musicPlayer.querySelector('.music-icon');
-                            musicIcon.classList.add('spinning');
-
-                            // Start progress tracking
-                            updateProgress();
-                        })
-                        .catch(error => {
-                            console.log('Playback failed:', error);
-                            isLoading = false;
-                            musicPlayer.classList.remove('loading');
-                            showMusicError();
-                        });
+                    // Stop spinning animation
+                    const musicIcon = musicPlayer.querySelector('.music-icon');
+                    musicIcon.classList.remove('spinning');
                 }
-            }
 
-            // Pause music
-            function pauseMusic() {
-                backgroundMusic.pause();
-                isPlaying = false;
-                musicPlayer.classList.remove('playing');
+                // Update progress bar
+                function updateProgress() {
+                    if (isPlaying && !backgroundMusic.paused) {
+                        const progress = (backgroundMusic.currentTime / backgroundMusic.duration) * 100;
+                        progressBar.style.width = progress + '%';
 
-                // Stop spinning animation
-                const musicIcon = musicPlayer.querySelector('.music-icon');
-                musicIcon.classList.remove('spinning');
-            }
-
-            // Update progress bar
-            function updateProgress() {
-                if (isPlaying && !backgroundMusic.paused) {
-                    const progress = (backgroundMusic.currentTime / backgroundMusic.duration) * 100;
-                    progressBar.style.width = progress + '%';
-
-                    requestAnimationFrame(updateProgress);
+                        requestAnimationFrame(updateProgress);
+                    }
                 }
+
+                // Handle audio events
+                backgroundMusic.addEventListener('loadstart', function () {
+                    isLoading = true;
+                    musicPlayer.classList.add('loading');
+                });
+
+                backgroundMusic.addEventListener('canplay', function () {
+                    isLoading = false;
+                    musicPlayer.classList.remove('loading');
+                });
+
+                backgroundMusic.addEventListener('ended', function () {
+                    // Song ended, restart (since loop is set)
+                    isPlaying = false;
+                    musicPlayer.classList.remove('playing');
+                    const musicIcon = musicPlayer.querySelector('.music-icon');
+                    musicIcon.classList.remove('spinning');
+
+                    // Auto restart
+                    setTimeout(() => {
+                        playMusic();
+                    }, 500);
+                });
+
+                backgroundMusic.addEventListener('error', function (e) {
+                    console.error('Audio error:', e);
+                    isLoading = false;
+                    musicPlayer.classList.remove('loading');
+                    showMusicError();
+                });
+
+                // Show error message
+                function showMusicError() {
+                    const musicInfo = musicPlayer.querySelector('.music-info');
+                    const originalText = musicInfo.innerHTML;
+                    musicInfo.innerHTML = '<div style="color: #ef4444;">⚠️ Không thể phát nhạc</div>';
+
+                    setTimeout(() => {
+                        musicInfo.innerHTML = originalText;
+                    }, 3000);
+                }
+
+                // Auto-play attempt (with user interaction fallback)
+                // function attemptAutoPlay() {
+                //     // Try to autoplay when user first interacts with the page
+                //     const autoPlayHandler = function() {
+                //         playMusic();
+                //         document.removeEventListener('click', autoPlayHandler);
+                //         document.removeEventListener('touchstart', autoPlayHandler);
+                //         document.removeEventListener('keydown', autoPlayHandler);
+                //     };
+
+                //     document.addEventListener('click', autoPlayHandler, { once: true });
+                //     document.addEventListener('touchstart', autoPlayHandler, { once: true });
+                //     document.addEventListener('keydown', autoPlayHandler, { once: true });
+                // }
+
+                // // Initialize auto-play attempt
+                // attemptAutoPlay();
+
+                // // Prevent music from pausing when page loses focus (optional)
+                // document.addEventListener('visibilitychange', function() {
+                //     if (document.hidden && isPlaying) {
+                //         // Page is hidden, keep playing (browser may still pause)
+                //     } else if (!document.hidden && backgroundMusic.paused && isPlaying) {
+                //         // Page is visible again, resume if it was playing
+                //         playMusic();
+                //     }
+                // });
             }
 
-            // Handle audio events
-            backgroundMusic.addEventListener('loadstart', function () {
-                isLoading = true;
-                musicPlayer.classList.add('loading');
-            });
 
-            backgroundMusic.addEventListener('canplay', function () {
-                isLoading = false;
-                musicPlayer.classList.remove('loading');
-            });
-
-            backgroundMusic.addEventListener('ended', function () {
-                // Song ended, restart (since loop is set)
-                isPlaying = false;
-                musicPlayer.classList.remove('playing');
-                const musicIcon = musicPlayer.querySelector('.music-icon');
-                musicIcon.classList.remove('spinning');
-
-                // Auto restart
-                setTimeout(() => {
-                    playMusic();
-                }, 500);
-            });
-
-            backgroundMusic.addEventListener('error', function (e) {
-                console.error('Audio error:', e);
-                isLoading = false;
-                musicPlayer.classList.remove('loading');
-                showMusicError();
-            });
-
-            // Show error message
-            function showMusicError() {
-                const musicInfo = musicPlayer.querySelector('.music-info');
-                const originalText = musicInfo.innerHTML;
-                musicInfo.innerHTML = '<div style="color: #ef4444;">⚠️ Không thể phát nhạc</div>';
-
-                setTimeout(() => {
-                    musicInfo.innerHTML = originalText;
-                }, 3000);
-            }
-
-            // Auto-play attempt (with user interaction fallback)
-            // function attemptAutoPlay() {
-            //     // Try to autoplay when user first interacts with the page
-            //     const autoPlayHandler = function() {
-            //         playMusic();
-            //         document.removeEventListener('click', autoPlayHandler);
-            //         document.removeEventListener('touchstart', autoPlayHandler);
-            //         document.removeEventListener('keydown', autoPlayHandler);
-            //     };
-
-            //     document.addEventListener('click', autoPlayHandler, { once: true });
-            //     document.addEventListener('touchstart', autoPlayHandler, { once: true });
-            //     document.addEventListener('keydown', autoPlayHandler, { once: true });
-            // }
-
-            // // Initialize auto-play attempt
-            // attemptAutoPlay();
-
-            // // Prevent music from pausing when page loses focus (optional)
-            // document.addEventListener('visibilitychange', function() {
-            //     if (document.hidden && isPlaying) {
-            //         // Page is hidden, keep playing (browser may still pause)
-            //     } else if (!document.hidden && backgroundMusic.paused && isPlaying) {
-            //         // Page is visible again, resume if it was playing
-            //         playMusic();
-            //     }
-            // });
-        }
-
-
-    </script>
-    <script src="scripts/rsvp.js"></script>
-    <!-- This script initializes the Google Map -->
-    <script src="scripts/map.js"></script>
-    <!-- This script adds the falling hearts effect -->
-    <script src="scripts/hearts.js"></script>
-    <!-- This script handles the wedding album animations -->
-    <!-- <script src="scripts/album.js"></script>
+        </script>
+        <script src="scripts/rsvp.js"></script>
+        <!-- This script initializes the Google Map -->
+        <script src="scripts/map.js"></script>
+        <!-- This script adds the falling hearts effect -->
+        <script src="scripts/hearts.js"></script>
+        <!-- This script handles the wedding album animations -->
+        <!-- <script src="scripts/album.js"></script>
       -->
-    <script>
-        // Initialize main gallery with 4 photos
-        lightGallery(document.getElementById('gallery'), {
-            thumbnail: true,
-            download: false,
-            selector: 'a'
-        });
-
-        // Initialize full gallery modal
-        document.addEventListener('DOMContentLoaded', function () {
-            // Generate all 40 photos for the hidden gallery
-            const fullGallery = document.getElementById('fullGallery');
-            for (let i = 1; i <= 20; i++) {
-                const link = document.createElement('a');
-                link.href = `images_tuloan/prewedding/image${i}.jpg`;
-
-                const img = document.createElement('img');
-                img.src = `images_tuloan/prewedding_thumb/thumb${i}.jpg`;
-                img.style.display = 'none';
-
-                link.appendChild(img);
-                fullGallery.appendChild(link);
-            }
-
-            // Initialize lightGallery for full gallery
-            const fullLightGallery = lightGallery(fullGallery, {
-                thumbnail: true,
-                download: false,
-                selector: 'a',
-                animateThumb: true,
-                zoomFromOrigin: false,
-                allowMediaOverlap: true,
-                toggleThumb: true
-            });
-
-            // Handle "View All" button click
-            document.getElementById('viewAllPhotos').addEventListener('click', function () {
-                fullLightGallery.openGallery(0);
-            });
-
-            // Initialize lightGallery for featured image
-            lightGallery(document.getElementById('featuredImageGallery'), {
+        <script>
+            // Initialize main gallery with 4 photos
+            lightGallery(document.getElementById('gallery'), {
                 thumbnail: false,
                 download: false,
                 selector: 'a'
             });
-        });
-    </script>
+
+            // Initialize full gallery modal
+            document.addEventListener('DOMContentLoaded', function () {
+                // Generate all 18 photos for the hidden gallery
+                const fullGallery = document.getElementById('fullGallery');
+                for (let i = 1; i <= 18; i++) {
+                    const link = document.createElement('a');
+                    link.href = `images_tuloan/prewedding/image${i}.jpg`;
+
+                    const img = document.createElement('img');
+                    img.src = `images_tuloan/prewedding_thumb/thumb${i}.jpg`;
+                    img.style.display = 'none';
+
+                    link.appendChild(img);
+                    fullGallery.appendChild(link);
+                }
+
+                // Initialize lightGallery for full gallery
+                const fullLightGallery = lightGallery(fullGallery, {
+                    thumbnail: true,
+                    download: false,
+                    selector: 'a',
+                    animateThumb: true,
+                    zoomFromOrigin: false,
+                    allowMediaOverlap: true,
+                    toggleThumb: true
+                });
+
+                // Handle "View All" button click
+                document.getElementById('viewAllPhotos').addEventListener('click', function () {
+                    fullLightGallery.openGallery(0);
+                });
+
+                // Initialize lightGallery for featured image
+                lightGallery(document.getElementById('featuredImageGallery'), {
+                    thumbnail: false,
+                    download: false,
+                    selector: 'a'
+                });
+            });
+        </script>
 </body>
 
 </html>
